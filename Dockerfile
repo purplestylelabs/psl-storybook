@@ -23,6 +23,7 @@ FROM nginx:alpine
 
 RUN rm -rf /usr/share/nginx/html/*
 
+COPY --from=builder /repo/nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /repo/packages/react-components/storybook-static /usr/share/nginx/html
 
 EXPOSE 80
