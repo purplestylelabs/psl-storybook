@@ -1,0 +1,36 @@
+name: Build & deploy storybook docker container
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-docker:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build the Docker image and tag with stage labels
+        run: |
+          rev=$(git rev-parse --short HEAD)
+          echo "rev ${rev}"
+          sudo docker build --build-arg GIT_COMMIT=${rev} -t storybook/t:latest -f ./Dockerfile .
+          sudo docker image tag storybook/t nexus.ppustage.dev/psl-storybook-service:${rev}
+          sudo docker image tag storybook/t nexus.ppustage.dev/psl-storybook-service:latest
+
+      - name: Push Image to nexus
+        env:
+          NEXUS_USER: ${{ secrets.NEXUS_USER }}
+          NEXUS_PWD: ${{ secrets.NEXUS_PWD }}
+        run: |
+          rev=$(git rev-parse --short HEAD)
+          echo "rev  ${rev}"
+          sudo docker login -u $NEXUS_USER -p $NEXUS_PWD nexus.ppustage.dev
+          sudo docker push nexus.ppustage.dev/psl-storybook-service:${rev}
+          sudo docker push nexus.ppustage.dev/psl-storybook-service:latest
