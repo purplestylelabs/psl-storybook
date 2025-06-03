@@ -1,10 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # Dependencies
 node_modules
-packages/react-components/node_modules
-packages/vue-components/node_modules
-packages/styles/node_modules
+**/node_modules
 .pnp
 .pnp.js
 
@@ -29,8 +25,8 @@ coverage
 out/
 build
 dist
-storybook-static
-storybook-tokens.css
+**/storybook-static
+**/storybook-tokens.css
 
 
 # Debug

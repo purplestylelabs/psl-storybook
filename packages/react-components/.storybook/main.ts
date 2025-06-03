@@ -4,15 +4,15 @@ import fs from "fs";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const _filename = fileURLToPath(import.meta.url);
+const _dirname = dirname(_filename);
 
 // NOTE: Hack to get storybook-design-token working with css inside node_modules
 const source = resolve(
-  __dirname,
+  _dirname,
   "../node_modules/@psl-storybook/styles/util.css",
 );
-const destination = resolve(__dirname, "../src/storybook-tokens.css");
+const destination = resolve(_dirname, "../src/storybook-tokens.css");
 fs.copyFileSync(source, destination);
 
 /**
