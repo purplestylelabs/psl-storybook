@@ -1,0 +1,51 @@
+import { Meta, DocsContainer } from "@storybook/addon-docs";
+import { tokens } from "@psl-storybook/styles";
+
+<Meta
+  title="Tokens/Colors"
+  parameters={{
+    docs: {
+      container: ({ children, context }) => {
+        return <DocsContainer context={context}>{children}</DocsContainer>;
+      },
+    },
+  }}
+/>
+
+# 🎨 Colors
+
+> These tokens should be used along with this.
+
+export const Colors = () => {
+  const colors = tokens.colors
+  return (
+    <>
+      <h3>Color Tokens</h3>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Class Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            Object.keys(colors).map((key) => (
+              <tr key={key}>
+                <td>
+                  <div className={`bg-${key}`} style={{ height: '30px', width: '200px' }}></div>
+                </td>
+                <td>{key}</td>
+                <td>{colors[key]}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </>
+
+);
+};
+
+<Colors />

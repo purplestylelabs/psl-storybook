@@ -1,0 +1,57 @@
+import { Meta, DocsContainer } from "@storybook/addon-docs";
+import { tokens } from "@psl-storybook/styles";
+
+<Meta
+  title="Tokens/Typography"
+  parameters={{
+    docs: {
+      container: ({ children, context }) => {
+        return <DocsContainer context={context}>{children}</DocsContainer>;
+      },
+    },
+  }}
+/>
+
+# 🔡 Typography
+
+> These tokens should be used along with this.
+
+export const Typography = () => {
+  return (
+    <>
+      <h3>Font Family</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Token Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <h3>Font Weight</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Token Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <h3>Font Size</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Token Name</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </>
+  );
+};
+
+<Typography />

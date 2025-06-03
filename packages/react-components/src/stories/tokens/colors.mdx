@@ -1,0 +1,25 @@
+import { Meta } from "@storybook/blocks";
+import { DesignTokenDocBlock } from "storybook-design-token";
+import { CircleColorPresenter } from "../../components/CircleColorPresenter";
+
+<Meta title="Tokens/Colors" />
+
+# Storybook Design Tokens
+
+Display design token documentation generated from your stylesheets and icon files. Preview design token changes in the browser. Add your design tokens to your Storybook Docs pages using the custom Doc Blocks.
+
+## Colors (Table)
+
+<DesignTokenDocBlock categoryName="Colors" maxHeight="none" viewType="table" />
+
+## Colors (Cards)
+
+<DesignTokenDocBlock categoryName="Colors" viewType="card" />
+
+## Colors with Custom presenter (Cards)
+
+<DesignTokenDocBlock
+  categoryName="Colors"
+  viewType="card"
+  presenters={{ Color: CircleColorPresenter }}
+/>

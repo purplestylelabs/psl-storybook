@@ -1,0 +1,26 @@
+{
+  "name": "@psl-storybook/styles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "style": "util.css",
+  "files": [
+    "dist",
+    "util.css"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc", 
+     "prepublishOnly": "npm run build"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./util.css": "./util.css"
+  }, 
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

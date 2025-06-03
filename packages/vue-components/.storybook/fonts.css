@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "GreycliffCF-DemiBold";
+  src: url("/fonts/greycliff-cf-demi-bold/webfonts/greycliff-cf-demi-bold.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GreycliffCF-Medium";
+  src: url("/fonts/greycliff-cf-medium/webfonts/greycliff-cf-medium.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GreycliffCF-Light";
+  src: url("/fonts/greycliff-cf-light/webfonts/greycliff-cf-light.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Material Icons";
+  src: url("/fonts/google_fonts.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
