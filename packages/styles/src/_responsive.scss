@@ -1,0 +1,49 @@
+$breakpoints: (
+  xs: 0,
+  sm: 0,
+  md: 960px,
+  lg: 1264px,
+  xl: 1904px,
+) !default;
+$grid-columns: 12 !default;
+
+@mixin generate-grid($bp) {
+  .hide-#{$bp} {
+    display: none;
+  }
+
+  @if $bp != xs {
+    .show-#{$bp} {
+      display: block;
+    }
+  }
+
+  @for $i from 1 through $grid-columns {
+    .col-#{$bp}-#{$i} {
+      flex-basis: calc($i / $grid-columns) * 100%;
+      max-width: calc($i / $grid-columns) * 100%;
+    }
+    .order-#{$bp}-#{$i} {
+      order: $i;
+    }
+    .offset-#{$bp}-#{$i} {
+      margin-left: calc($i / $grid-columns) * 100%;
+    }
+  }
+
+  .offset-#{$bp}-0 {
+    margin-left: 0;
+  }
+}
+
+@each $bp, $minw in $breakpoints {
+  @if $minw == 0 {
+    @media all and (width >= 0) {
+      @include generate-grid($bp);
+    }
+  } @else {
+    @media all and (min-width: $minw) {
+      @include generate-grid($bp);
+    }
+  }
+}

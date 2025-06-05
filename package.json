@@ -5,6 +5,7 @@
   "scripts": {
     "dev:vue": "pnpm run storybook --filter=./packages/vue-components",
     "dev:react": "wait-on tcp:6007 && pnpm run storybook --filter=./packages/react-components",
+    "dev:styles": "pnpm --filter=./packages/styles run build",
     "dev": "concurrently --kill-others-on-fail \"pnpm --filter './packages/vue-components' run storybook:silent\" \"wait-on tcp:6007 && pnpm --filter './packages/react-components' run storybook\"",
     "build": "pnpm run build-storybook --filter=./packages/react-components",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

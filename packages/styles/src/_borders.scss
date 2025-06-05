@@ -1,0 +1,83 @@
+@use 'sass:map';
+@use 'tokens';
+
+// TODO: can remove these if removed from project
+.border {
+  border: map.get(tokens.$border-widths, thin) solid currentColor;
+}
+
+.rounded {
+  border-radius: map.get(tokens.$border-radius, md);
+}
+
+// NOTE: PWA styles
+// .borderLine-thin {
+//   height: 1px;
+//   background-color: #dbdbdb;
+//   opacity: 0.6;
+// }
+// .borderLine {
+//   height: 8px;
+//   background-color: #f4f4f4;
+//   // opacity: 0.5;
+// }
+// .borderLine2 {
+//   height: 16px;
+//   position: relative;
+//   top: -2px;
+//   background-color: #fff;
+//   border-bottom: 8px solid #f4f4f4;
+//   box-sizing: border-box;
+// }
+// .borderLine4 {
+//   position: relative;
+//   top: -2px;
+//   background-color: #fff;
+//   border-bottom: 8px solid #f4f4f4;
+//   box-sizing: border-box;
+// }
+
+// Width utilities
+@each $name, $width in tokens.$border-widths {
+  .border-#{$name} {
+    border-width: var(--border-width-#{$name}, $width);
+  }
+}
+
+// Side-specific width utilities
+@each $abbr, $side in tokens.$border-sides {
+  @each $name, $width in tokens.$border-widths {
+    .border-#{$abbr}-#{$name} {
+      border-#{$side}-width: var(--border-width-#{$name}, $width);
+    }
+  }
+}
+
+// Style utilities
+@each $name, $style in tokens.$border-styles {
+  .border-style-#{$name} {
+    border-style: var(--border-style-#{$name}, $style);
+  }
+}
+
+@each $abbr, $side in tokens.$border-sides {
+  @each $name, $style in tokens.$border-styles {
+    .border-style-#{$abbr}-#{$name} {
+      border-#{$side}-style: var(--border-style-#{$name}, $style);
+    }
+  }
+}
+
+// Color utilities (uses your tokens.$colors map)
+@each $name, $col in tokens.$colors {
+  .border-color-#{$name} {
+    border-color: var(--color-#{$name}, $col);
+  }
+}
+
+// Radius utilities
+@each $name, $radius in tokens.$border-radius {
+  .rounded-#{$name} {
+    border-radius: var(--border-radius-#{$name}, $radius);
+  }
+}

@@ -1,0 +1,151 @@
+@use 'sass:map';
+@use 'sass:meta';
+
+.box-border {
+  box-sizing: border-box;
+}
+
+// TODO: why is this?
+.no-ellipsis {
+  display: unset !important;
+}
+
+// Duplicate overrides. Can be removed once changed in projects
+.hide {
+  display: none;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+// TODO: can be removed?
+// .sticky {
+//   position: -webkit-sticky;
+//   position: -moz-sticky;
+//   position: -ms-sticky;
+//   position: -o-sticky;
+//   position: sticky;
+// }
+
+.prel {
+  position: relative;
+}
+
+.pabs {
+  position: absolute;
+}
+
+/* prettier-ignore */
+$size-widths: (
+  0: 0,
+  full: 100%, // w100, full-width
+  half: 50%, // max-w-50
+  auto: auto,
+  screen: 100vw,
+  min: min-content,
+  max: max-content,
+  fit: fit-content,
+) !default;
+
+/* prettier-ignore */
+$size-heights: (
+  0: 0,
+  full: 100%, // h100, full-height
+  half: 50%,
+  auto: auto,
+  screen: 100vh, // h-screen
+  dvh: 100dvh, // max-h-ios
+  min: min-content,
+  max: max-content,
+  fit: fit-content,
+) !default;
+
+// Width utilities
+@each $key, $val in $size-widths {
+  .w-#{$key} {
+    width: $val;
+  }
+  .min-w-#{$key} {
+    min-width: $val;
+  }
+  .max-w-#{$key} {
+    max-width: $val;
+  }
+}
+
+// Height utilities
+@each $key, $val in $size-heights {
+  .h-#{$key} {
+    height: $val;
+  }
+  .min-h-#{$key} {
+    min-height: $val;
+  }
+  .max-h-#{$key} {
+    max-height: $val;
+  }
+}
+
+// Display utilities
+/* prettier-ignore */
+$display-types: (
+  none,
+  block,
+  inline,
+  inline-block,
+  flex, // d-flex
+  inline-flex,
+  grid,
+  inline-grid
+) !default;
+
+@each $d in $display-types {
+  .#{$d} {
+    display: $d; // ds-block, hide, d-flex
+  }
+}
+
+// Position utilities
+$positions: (static, relative, absolute, fixed, sticky) !default;
+
+@each $p in $positions {
+  .#{$p} {
+    position: $p;
+  }
+}
+
+// Inset utilities
+$inset-values: (0, auto) !default;
+
+@each $val in $inset-values {
+  $name: if(meta.type-of($val) == 'number', $val, $val);
+  .inset-#{$name} {
+    inset: $val;
+  }
+}
+
+// Float utilities
+$floats: (left, right, none) !default;
+
+@each $f in $floats {
+  .float-#{$f} {
+    float: $f; // fr, fl
+  }
+}
+
+// Overflow utilities
+$overflows: (visible, hidden, scroll, auto) !default;
+
+/* prettier-ignore */
+@each $o in $overflows {
+  .overflow-#{$o} {
+    overflow: $o; // o-h, overflow-visible, 
+  }
+  .overflow-x-#{$o} {
+    overflow-x: $o; // overflow-x-scroll, 
+  }
+  .overflow-y-#{$o} {
+    overflow-y: $o; // overflow-y-scroll, overflow-y-hidden, o-y
+  }
+}

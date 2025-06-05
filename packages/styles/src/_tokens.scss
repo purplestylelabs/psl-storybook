@@ -1,0 +1,288 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@function gen-spacing($max, $step) {
+  $m: ();
+  $count: math.floor(math.div($max, $step));
+
+  @for $i from 0 through $count {
+    $size: $i * $step; // 0, 5, 10, …
+    $m: map.merge(
+      $m,
+      (
+        $size: $size * 1px,
+      )
+    );
+  }
+
+  @return $m;
+}
+
+$spacing: gen-spacing(100, 5) !default;
+
+$opacity-max: 100 !default;
+$opacity-step: 10 !default;
+
+// TODO: pallete should be grouped by color, gray group (gray-1, gray-2), red group
+/* prettier-ignore */
+$colors: (
+  'grey-1':              #fafafa,                  // placeholder: bg-fafafa
+  'grey-2':              #f4f4f4,                  // light-grey: bg-light-grey
+  'grey-3':              #dbdbdb,                  // placeholder-bg: db-color, placeholder-grey-color
+  'grey-4':              #c2c2c2,                  // grey-light: pernia-light-grey
+  'grey-5':              #bbb,                  // disabled: 
+  'grey-6':              #acacac,                  // grey: cl-grey
+  'grey-7':              #8c8c8c,                  // account-input: 
+  'grey-8':              #757575,                  // pernia-dark-grey: pernia-black, black-color, dark-grey
+  'grey-9':              #666,                  // dark-grey: c6
+  'grey-10':             #333,                  // label: cl-label
+
+  // Transparent grey variants
+  'grey-transparent-15': hsla(0, 0%, 86%, 15%),   // grey-15: rgba(#dbdbdb, 0.15)
+  'grey-transparent-25': hsla(0, 0%, 86%, 25%),   // grey-25: rgba(#dbdbdb, 0.25)
+  'grey-transparent-30': hsla(0, 0%, 86%, 30%),   // grey-30: rgba(#dbdbdb, 0.30)
+  'grey-transparent-50': hsla(0, 0%, 86%, 50%),   // grey-50: rgba(#dbdbdb, 0.50)
+
+  // Core neutrals
+  'black':               #000,                  // black: bg-vantablack, cl-black
+  'white':               #fff,                  // pernia-white: cff, bg-white, pernia, cl-white, pernia-white
+
+  // Reds & Pinks
+  'rose-red':            #e83647,                  // pernia: pernia-color-1, pernia, pernia-color
+  'pale-pink':           #f9d9e4,                  // pernia-lite: 
+  'blush-pink':          #ffe7ef,                  // pernia-lighter: 
+  'charcoal':            #212121,                  // pernia-black: base-black-color, bg-black
+  'red-orange':          #ef3e00,                  // pernia-red: pernia-red
+
+  // Purples
+  'lavender':            #f4f1ff,                  // loyalty-bg: 
+  'indigo':              #6030ff,                  // loyalty: 
+
+  // Greens
+  'medium-green':        #4BB543,                  // success: cl-success
+
+  // Additional reds
+  'scarlet':             #ff3800,                  // warning-red: warning-red
+  'maroon':              #9f0032,                  // special-red: bg-special-red
+
+  // Other neutrals
+  'slate-light':         #eef0f5,                  // slate: cl-placeholder-loader
+  'light-pink':          #ffdee1                   // light-pink: bg-light-pink
+) !default;
+$colors-overrides: ('charcoal', 'white', 'rose-red') !default;
+$colors-on-hover: ('charcoal', 'white', 'rose-red') !default;
+
+/** TODO: widths should be according to device need to discuss */
+$breakpoints-min: (
+  xs: 959px,
+  sm: 1279px,
+  md: 1439px,
+  lg: 1919px,
+  b0: 2559px,
+  b1: 1919px,
+  b2: 1679px,
+  b3: 1439px,
+  b4: 1279px,
+  b5: 1079px,
+  tablet: 768px,
+) !default;
+
+$container-widths: (
+  xs: 840px,
+  sm: 960px,
+  md: 1080px,
+  lg: 1440px,
+  b0: 2304px,
+  b1: 1728px,
+  b2: 1512px,
+  b3: 1296px,
+  b4: 1152px,
+  b5: 1020px,
+) !default;
+
+$border-widths: (
+  none: 0,
+  thin: 1px,
+  medium: 2px,
+  thick: 3px,
+) !default;
+
+$border-styles: (
+  solid: solid,
+  dashed: dashed,
+  dotted: dotted,
+  double: double,
+) !default;
+
+$border-radius: (
+  none: 0,
+  sm: 0.125rem,
+  md: 0.25rem,
+  lg: 0.5rem,
+  full: 9999px,
+) !default;
+
+$border-sides: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+) !default;
+
+$font-sizes: (
+  40: 40px,
+  32: 32px,
+  28: 28px,
+  24: 24px,
+  20: 20px,
+  18: 18px,
+  16: 16px,
+  14: 14px,
+  13: 13px,
+  12: 12px,
+  11: 11px,
+  10: 10px,
+) !default;
+
+$line-heights: (
+  '1-5': 1.5,
+  '1-43': 1.43,
+  '1-4': 1.4,
+  '1-38': 1.38,
+  '1-33': 1.33,
+  44: 44px,
+  40: 40px,
+  32: 32px,
+  30: 30px,
+  28: 28px,
+  26: 26px,
+  24: 24px,
+  22: 22px,
+  20: 20px,
+  18: 18px,
+  16: 16px,
+  12: 12px,
+) !default;
+
+$letter-spacings: (
+  '0-8': 0.8px,
+  '0-6': 0.6px,
+  '0-4': 0.4px,
+  '0-2': 0.2px,
+  '0-1': 0.1px,
+  0: 0,
+) !default;
+
+:root {
+  /*!
+  * @tokens Spacing
+  * @presenter Spacing
+  */
+  @each $key, $val in $spacing {
+    --spacing-#{$key}: #{$val}; /* m-#{$key}, mx-#{$key}, my-#{$key}, mt-#{$key}, mb-#{$key}, ml-#{$key}, mr-#{$key}, p-#{$key}, px-#{$key}, py-#{$key}, pt-#{$key}, pb-#{$key}, pl-#{$key}, pr-#{$key} */
+  }
+
+  /*!
+  * @tokens Colors
+  * @presenter Color
+  */
+  @each $key, $val in $colors {
+    --color-#{$key}: #{$val}; /* bg-#{$key}, text-#{$key} */
+  }
+
+  /*!
+  * @tokens Breakpoints
+  */
+  @each $key, $val in $breakpoints-min {
+    --breakpoint-#{$key}: #{$val};
+  }
+
+  /*!
+  * @tokens Borders
+  * @presenter Border
+  */
+  // Border Widths
+  @each $key, $val in $border-widths {
+    --border-width-#{$key}: #{$val}; /* border-#{$key} */
+  }
+
+  // Border Styles
+  @each $key, $val in $border-styles {
+    --border-style-#{$key}: #{$val}; /* border-style-#{$key} */
+  }
+
+  // Border Radius
+  @each $key, $val in $border-radius {
+    --border-radius-#{$key}: #{$val}; /* rounded-#{$key} */
+  }
+  /*!
+  * @tokens-end
+  */
+
+  /*!
+  * @tokens Animations
+  * @presenter Animation
+  */
+  --animation-fade-in: fade-in 1s linear both; /* fade-in */
+
+  /*!
+  * @tokens Opacities
+  * @presenter Opacity
+  */
+  @for $i from 0 through $opacity-max {
+    @if ($i % $opacity-step) == 0 {
+      --opacity-#{$i}: calc(#{$i} / #{$opacity-max}); /* opacity-#{$i} */
+    }
+  }
+
+  /*!
+  * @tokens Shadows
+  * @presenter Shadow
+  */
+  --shadow-sm: 0 0 4px #ccc9c9; /* box-shadow-sm */
+
+  /*!
+  * @tokens Font Families
+  * @presenter FontFamily
+  */
+  --font-greycliff-light: 'GreycliffCF-Light'; /* font-light */
+  --font-greycliff-medium: 'GreycliffCF-Medium'; /* font-medium */
+  --font-greycliff-demi-bold: 'GreycliffCF-DemiBold'; /* font-demi-bold */
+  --font-manrope-medium: 'Manrope-Medium'; /* font-medium-manrope */
+  --font-manrope-semi-bold: 'Manrope-SemiBold'; /* font-demi-bold-manrope */
+
+  /*!
+  * @tokens Font Sizes
+  * @presenter FontSize
+  */
+  @each $key, $size in $font-sizes {
+    --font-size-#{$key}: #{$size}; /* fs-#{$key} */
+  }
+
+  /*!
+  * @tokens Font Weights
+  * @presenter FontWeight
+  */
+  --font-primary-light: 'GreycliffCF-Light'; /* font-light */
+  --font-primary-medium: 'GreycliffCF-Medium'; /* font-medium */
+  --font-primary-demi-bold: 'GreycliffCF-DemiBold'; /* font-demi-bold */
+  --font-secondary-medium: 'Manrope-Medium'; /* font-medium-manrope */
+  --font-secondary-semi-bold: 'Manrope-SemiBold'; /* font-demi-bold-manrope */
+  --font-weight-500: 500; /* No class is needed as its is default value and is pre-applied */
+
+  /*!
+  * @tokens Letter Spacings
+  * @presenter LetterSpacing
+  */
+  @each $key, $ls in $letter-spacings {
+    --font-letter-spacing-#{$key}: #{$ls}; /* ls-#{$key} */
+  }
+
+  /*!
+  * @tokens Line Heights
+  * @presenter LineHeight
+  */
+  @each $key, $lh in $line-heights {
+    --font-line-height-#{$key}: #{$lh}; /* lh-#{$key} */
+  }
+}

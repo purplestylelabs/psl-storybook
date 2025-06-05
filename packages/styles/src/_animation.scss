@@ -1,0 +1,13 @@
+.fade-in {
+  animation: var(--animation-fade-in);
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: var(--opacity-0);
+  }
+
+  100% {
+    opacity: var(--opacity-100);
+  }
+}

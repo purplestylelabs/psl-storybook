@@ -1,26 +1,45 @@
 {
   "name": "@psl-storybook/styles",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "style": "util.css",
+  "type": "module",
+  "main": "dist/util.min.css",
+  "style": "dist/util.min.css",
   "files": [
-    "dist",
-    "util.css"
+    "dist"
   ],
-  "sideEffects": false,
+  "sideEffects": "false",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc", 
-     "prepublishOnly": "npm run build"
+    "build": "concurrently \"pnpm run build:prod\" \"pnpm run build:css\" \"pnpm run build:raw\"",
+    "build:raw": "sass src/index.scss dist/util.raw.css --no-source-map",
+    "build:css": "sass src/index.scss dist/util.css --no-source-map --style=expanded && postcss dist/util.css --no-map -o dist/util.css",
+    "build:prod": "NODE_ENV=production sass src/index.scss dist/util.min.css --no-source-map --style=compressed && NODE_ENV=production postcss dist/util.min.css --no-map -o dist/util.min.css",
+    "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx,scss,css,json,md}\"",
+    "lint:css": "stylelint \"src/**/*.{scss,css}\"",
+    "lint:css:fix": "stylelint \"src/**/*.{scss,css}\" --fix"
   },
   "exports": {
-    ".": "./dist/index.js",
-    "./util.css": "./util.css"
-  }, 
+    "./util.css": "./dist/util.css",
+    "./util.min.css": "./dist/util.min.css",
+    "./util.raw.css": "./dist/util.raw.css"
+  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "sass": "^1.87.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "postcss-discard-comments": "^7.0.4",
+    "postcss-scss": "^4.0.9",
+    "prettier": "^3.5.3",
+    "stylelint": "^16.19.1",
+    "stylelint-config-standard-scss": "^14.0.0",
+    "stylelint-order": "^7.0.0",
+    "stylelint-prettier": "^5.0.3"
+  }
 }

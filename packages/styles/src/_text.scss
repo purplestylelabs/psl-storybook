@@ -1,0 +1,76 @@
+$text-align-options: (
+  left: left,
+  center: center,
+  right: right,
+  justify: justify,
+  start: start,
+) !default;
+
+@each $name, $value in $text-align-options {
+  .text-#{$name} {
+    text-align: $value; // txt-c, txt-r, text-center, text-start
+  }
+}
+
+// TODO: refactor this to use function
+.ellipsis-one-line {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+}
+
+.ellipsis-two-line {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.ellipsis-three-line {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.ellipsis-six-line {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-uppercase {
+  text-transform: uppercase; // txt-u, uppercase
+}
+
+.text-capitalize {
+  text-transform: capitalize; // txt-cap
+}
+
+.text-dec-none {
+  text-decoration: none;
+}
+
+.text-dec-underline {
+  text-decoration: underline;
+}
+
+.word-break {
+  word-break: break-word;
+}
+
+.break-all {
+  word-break: break-all;
+}

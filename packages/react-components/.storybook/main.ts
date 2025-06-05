@@ -10,7 +10,7 @@ const _dirname = dirname(_filename);
 // NOTE: Hack to get storybook-design-token working with css inside node_modules
 const source = resolve(
   _dirname,
-  "../node_modules/@psl-storybook/styles/util.css",
+  "../node_modules/@psl-storybook/styles/dist/util.raw.css",
 );
 const destination = resolve(_dirname, "../src/storybook-tokens.css");
 fs.copyFileSync(source, destination);

@@ -1,0 +1,59 @@
+@use 'sass:map';
+@use 'tokens';
+
+// TODO: see if we have to add !important
+@each $key, $val in tokens.$spacing {
+  // all-sides
+  .m-#{$key} {
+    margin: var(--spacing-#{$val}, $val);
+  }
+  .p-#{$key} {
+    padding: var(--spacing-#{$val}, $val);
+  }
+
+  // single-side
+  .mt-#{$key} {
+    margin-top: var(--spacing-#{$val}, $val);
+  }
+  .mr-#{$key} {
+    margin-right: var(--spacing-#{$val}, $val);
+  }
+  .mb-#{$key} {
+    margin-bottom: var(--spacing-#{$val}, $val);
+  }
+  .ml-#{$key} {
+    margin-left: var(--spacing-#{$val}, $val);
+  }
+
+  .pt-#{$key} {
+    padding-top: var(--spacing-#{$val}, $val);
+  }
+  .pr-#{$key} {
+    padding-right: var(--spacing-#{$val}, $val);
+  }
+  .pb-#{$key} {
+    padding-bottom: var(--spacing-#{$val}, $val);
+  }
+  .pl-#{$key} {
+    padding-left: var(--spacing-#{$val}, $val);
+  }
+
+  // axis shorthands you were missing
+  .mx-#{$key} {
+    margin-left: var(--spacing-#{$val}, $val);
+    margin-right: var(--spacing-#{$val}, $val);
+  }
+  .my-#{$key} {
+    margin-bottom: var(--spacing-#{$val}, $val);
+    margin-top: var(--spacing-#{$val}, $val);
+  }
+
+  .px-#{$key} {
+    padding-left: var(--spacing-#{$val}, $val);
+    padding-right: var(--spacing-#{$val}, $val);
+  }
+  .py-#{$key} {
+    padding-bottom: var(--spacing-#{$val}, $val);
+    padding-top: var(--spacing-#{$val}, $val);
+  }
+}

@@ -1,0 +1,40 @@
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.user-select-none {
+  user-select: none;
+}
+
+.pointer-events-none {
+  pointer-events: none; // disable-click
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.whitespace-pre-line {
+  white-space: pre-line;
+}
+
+.whitespace-wrap {
+  white-space: wrap;
+}
+
+.list-unstyled {
+  list-style-type: none;
+}
+
+.object-fit-contain {
+  object-fit: contain;
+}
+
+.img-resp {
+  height: auto;
+  width: 100%;
+}
