@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import remarkGfm from 'remark-gfm'
 
 import fs from "fs";
 import { dirname, resolve } from "path";
@@ -15,10 +16,6 @@ const source = resolve(
 const destination = resolve(_dirname, "../src/storybook-tokens.css");
 fs.copyFileSync(source, destination);
 
-/**
- * This function is used to resolve the absolute path of a package.
- * It is needed in projects that use Yarn PnP or are set up within a monorepo.
- */
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
@@ -29,6 +26,16 @@ const config: StorybookConfig = {
       name: "storybook-design-token",
       options: {
         glob: ["**/storybook-tokens.css"],
+      },
+    },
+     {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
       },
     },
   ],

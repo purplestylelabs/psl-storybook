@@ -1,0 +1,58 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+<Meta title="Tokens/Text" />
+
+# Storybook Design Tokens
+
+Display design token documentation generated from your stylesheets and icon files. Preview design token changes in the browser. Add your design tokens to your Storybook Docs pages using the custom Doc Blocks.
+
+
+## Text Alignment
+
+These classes control the horizontal alignment of text within an element.
+
+| Class Name      | Description              | Usage Example (HTML)                   | Actual CSS Applied             |
+| :-------------- | :----------------------- | :------------------------------------- | :----------------------------- |
+| `.text-left`    | Aligns text to the left  | `<p class="text-left">Left aligned text.</p>` | `text-align: left;`            |
+| `.text-center`  | Centers text             | `<h1 class="text-center">Centered Heading</h1>` | `text-align: center;`          |
+| `.text-right`   | Aligns text to the right | `<div class="text-right">Right aligned content.</div>` | `text-align: right;`           |
+| `.text-justify` | Justifies text           | `<p class="text-justify">Long paragraph text...</p>` | `text-align: justify;`         |
+| `.text-start`   | Aligns text to the start (left for LTR, right for RTL) | `<span class="text-start">Start aligned.</span>` | `text-align: start;`           |
+
+---
+
+## Text Overflow & Ellipsis
+
+These classes manage how text is displayed when it overflows its container, often by truncating and adding an ellipsis.
+
+| Class Name             | Description                                | Usage Example (HTML)                    | Actual CSS Applied              |
+| :--------------------- | :----------------------------------------- | :-------------------------------------- | :------------------------------ |
+| `.ellipsis-one-line`   | Truncates text to one line with an ellipsis | `<p class="ellipsis-one-line">Very long text that needs to be cut off.</p>` | `-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; overflow: hidden;` |
+| `.ellipsis-two-line`   | Truncates text to two lines with an ellipsis | `<p class="ellipsis-two-line">This text will span two lines before being truncated.</p>` | `-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;` |
+| `.ellipsis-three-line` | Truncates text to three lines with an ellipsis | `<p class="ellipsis-three-line">This multi-line text will be truncated after three lines.</p>` | `-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden;` |
+| `.ellipsis-six-line`   | Truncates text to six lines with an ellipsis | `<p class="ellipsis-six-line">A longer block of text that might span several lines.</p>` | `-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; overflow: hidden;` |
+| `.ellipsis`            | Truncates single-line text with an ellipsis | `<div class="ellipsis">A very long single line of text that needs to be truncated.</div>` | `overflow: hidden; text-overflow: ellipsis; white-space: nowrap;` |
+
+---
+
+## Text Transformation & Decoration
+
+These classes control the casing of text and apply various text decorations.
+
+| Class Name             | Description                           | Usage Example (HTML)                   | Actual CSS Applied             |
+| :--------------------- | :------------------------------------ | :------------------------------------- | :----------------------------- |
+| `.text-uppercase`      | Transforms text to uppercase          | `<span class="text-uppercase">all caps</span>` | `text-transform: uppercase;`   |
+| `.text-capitalize`     | Capitalizes the first letter of each word | `<p class="text-capitalize">this is a title.</p>` | `text-transform: capitalize;`  |
+| `.text-dec-none`       | Removes text decoration (e.g., underlines) | `<a class="text-dec-none" href="#">No Underline Link</a>` | `text-decoration: none;`       |
+| `.text-dec-underline`  | Adds an underline to text             | `<span class="text-dec-underline">Underlined Text</span>` | `text-decoration: underline;`  |
+
+---
+
+## Word Breaking
+
+These classes manage how words break when they overflow their container.
+
+| Class Name   | Description                      | Usage Example (HTML)             | Actual CSS Applied       |
+| :----------- | :------------------------------- | :------------------------------- | :----------------------- |
+| `.word-break`| Breaks words at arbitrary points to prevent overflow | `<div class="word-break">Averyverylongwordthatwontfitwithoutbreaking.</div>` | `word-break: break-word;`|
+| `.break-all` | Breaks words at any character to prevent overflow | `<div class="break-all">Anotherextremelylongwordtobecompletelybroken.</div>` | `word-break: break-all;` |

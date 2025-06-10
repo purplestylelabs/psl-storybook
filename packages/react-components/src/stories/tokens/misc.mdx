@@ -1,0 +1,60 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+<Meta title="Tokens/Misc" />
+
+# Storybook Design Tokens
+
+Display design token documentation generated from your stylesheets and icon files. Preview design token changes in the browser. Add your design tokens to your Storybook Docs pages using the custom Doc Blocks.
+
+## Cursor Styles
+
+Control the appearance of the mouse cursor when hovering over an element.
+
+| Class Name           | Description           | Usage Example (HTML)               | Actual CSS Applied              |
+| :------------------- | :-------------------- | :--------------------------------- | :------------------------------ |
+| `.cursor-default`    | Default system cursor | `<div class="cursor-default">...</div>` | `cursor: default;`              |
+| `.cursor-pointer`    | Pointer (hand) cursor | `<button class="cursor-pointer">...</button>` | `cursor: pointer;`              |
+
+---
+
+## User Interaction & Events
+
+Manage how users can interact with elements.
+
+| Class Name            | Description           | Usage Example (HTML)               | Actual CSS Applied             |
+| :-------------------- | :-------------------- | :--------------------------------- | :----------------------------- |
+| `.user-select-none`   | Disables text selection | `<p class="user-select-none">...</p>` | `user-select: none;`           |
+| `.pointer-events-none`| Disables all pointer events (clicks, hovers) | `<div class="pointer-events-none">...</div>` | `pointer-events: none;`        |
+
+---
+
+## Whitespace & Text Flow
+
+Control how whitespace and text wrapping behave within elements.
+
+| Class Name            | Description           | Usage Example (HTML)               | Actual CSS Applied             |
+| :-------------------- | :-------------------- | :--------------------------------- | :----------------------------- |
+| `.no-wrap`            | Prevents text from wrapping | `<span class="no-wrap">Long text here...</span>` | `white-space: nowrap;`         |
+| `.whitespace-pre-line`| Preserves line breaks but collapses spaces | `<p class="whitespace-pre-line">Text with\nnewlines.</p>` | `white-space: pre-line;`       |
+| `.whitespace-wrap`    | Allows text to wrap normally | `<div class="whitespace-wrap">Paragraph text...</div>` | `white-space: wrap;`           |
+
+---
+
+## List Styles
+
+Modify the appearance of lists.
+
+| Class Name            | Description           | Usage Example (HTML)               | Actual CSS Applied             |
+| :-------------------- | :-------------------- | :--------------------------------- | :----------------------------- |
+| `.list-unstyled`      | Removes default list markers | `<ul class="list-unstyled">...</ul>` | `list-style-type: none;`       |
+
+---
+
+## Image & Media Handling
+
+Styles for responsive images and object fitting.
+
+| Class Name            | Description           | Usage Example (HTML)               | Actual CSS Applied             |
+| :-------------------- | :-------------------- | :--------------------------------- | :----------------------------- |
+| `.object-fit-contain` | Scales content to fit, preserving aspect ratio | `<img class="object-fit-contain" src="..." />` | `object-fit: contain;`         |
+| `.img-resp`           | Makes images responsive | `<img class="img-resp" src="..." />` | `height: auto; width: 100%;`   |

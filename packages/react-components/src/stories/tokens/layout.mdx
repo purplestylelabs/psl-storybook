@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Tokens/Layout" />
+
+# Storybook Design Tokens
+
+Display design token documentation generated from your stylesheets and icon files. Preview design token changes in the browser. Add your design tokens to your Storybook Docs pages using the custom Doc Blocks.
+
+
+### General Utilities
+
+These classes provide general-purpose styling functionalities.
+
+| Class | Description | CSS Applied |
+| :--- | :--- | :--- |
+| `.box-border` | Sets the box-sizing model to `border-box`. | `box-sizing: border-box;` |
+| `.no-ellipsis` | Overrides ellipsis behavior. | `display: unset !important;` |
+| `.hide` | Hides an element. | `display: none;` |
+| `.visibility-hidden` | Hides an element but maintains its space. | `visibility: hidden;` |
+| `.prel` | Sets the position to relative. | `position: relative;` |
+| `.pabs` | Sets the position to absolute. | `position: absolute;` |
+
+---
+
+### Sizing Utilities
+
+Use these classes to control the width and height of elements.
+
+#### Width
+
+| Class | Description | CSS Applied |
+| :--- | :--- | :--- |
+| `.w-0` | Sets width to 0. | `width: 0;` |
+| `.w-full` | Sets width to 100%. | `width: 100%;` |
+| `.w-half` | Sets width to 50%. | `width: 50%;` |
+| `.w-auto` | Sets width to auto. | `width: auto;` |
+| `.w-screen` | Sets width to 100vw. | `width: 100vw;` |
+| `.w-min` | Sets width to min-content. | `width: min-content;` |
+| `.w-max` | Sets width to max-content. | `width: max-content;` |
+| `.w-fit` | Sets width to fit-content. | `width: fit-content;` |
+| `**.min-w-\***` | Applies `min-width`. | e.g., `.min-w-half` applies `min-width: 50%;` |
+| `**.max-w-\***` | Applies `max-width`. | e.g., `.max-w-full` applies `max-width: 100%;` |
+
+#### Height
+
+| Class | Description | CSS Applied |
+| :--- | :--- | :--- |
+| `.h-0` | Sets height to 0. | `height: 0;` |
+| `.h-full` | Sets height to 100%. | `height: 100%;` |
+| `.h-half` | Sets height to 50%. | `height: 50%;` |
+| `.h-auto` | Sets height to auto. | `height: auto;` |
+| `.h-screen` | Sets height to 100vh. | `height: 100vh;` |
+| `.h-dvh` | Sets height to 100dvh. | `height: 100dvh;` |
+| `.h-min` | Sets height to min-content. | `height: min-content;` |
+| `.h-max` | Sets height to max-content. | `height: max-content;` |
+| `.h-fit` | Sets height to fit-content. | `height: fit-content;` |
+| `**.min-h-\***` | Applies `min-height`. | e.g., `.min-h-screen` applies `min-height: 100vh;` |
+| `**.max-h-\***` | Applies `max-height`. | e.g., `.max-h-full` applies `max-height: 100%;` |
+
+---
+
+### Display & Position Utilities
+
+Control the display behavior and positioning of elements.
+
+#### Display
+
+| Class | Description | CSS Applied |
+| :--- | :--- | :--- |
+| `.none` | Hides an element. | `display: none;` |
+| `.block` | Sets display to block. | `display: block;` |
+| `.inline` | Sets display to inline. | `display: inline;` |
+| `.inline-block` | Sets display to inline-block. | `display: inline-block;` |
+| `.flex` | Sets display to flex. | `display: flex;` |
+| `.inline-flex` | Sets display to inline-flex. | `display: inline-flex;` |
+| `.grid` | Sets display to grid. | `display: grid;` |
+| `.inline-grid` | Sets display to inline-grid. | `display: inline-grid;` |
+
+#### Position
+
+| Class | Description | CSS Applied |
+| :--- | :--- | :--- |
+| `.static` | Sets position to static. | `position: static;` |
+| `.relative` | Sets position to relative. | `position: relative;` |
+| `.absolute` | Sets position to absolute. | `position: absolute;` |
+| `.fixed` | Sets position to fixed. | `position: fixed;` |
+| `.sticky` | Sets position to sticky. | `position: sticky;` |
+
+#### Inset
+
+| Class | Description | CSS Applied |
+| :--- | :--- | :--- |
+| `.inset-0` | Sets inset (top, right, bottom, left) to 0. | `inset: 0;` |
+| `.inset-auto` | Sets inset to auto. | `inset: auto;` |
+
+---
+
+### Float & Overflow Utilities
+
+Manage floating elements and how content overflows.
+
+#### Float
+
+| Class | Description | CSS Applied |
+| :--- | :--- | :--- |
+| `.float-left` | Floats the element to the left. | `float: left;` |
+| `.float-right` | Floats the element to the right. | `float: right;` |
+| `.float-none` | Resets float. | `float: none;` |
+
+#### Overflow
+
+| Class | Description | CSS Applied |
+| :--- | :--- | :--- |
+| `.overflow-visible` | Content is not clipped. | `overflow: visible;` |
+| `.overflow-hidden` | Content is clipped. | `overflow: hidden;` |
+| `.overflow-scroll` | Content is clipped, with scrollbars. | `overflow: scroll;` |
+| `.overflow-auto` | Adds scrollbars only when necessary. | `overflow: auto;` |
+| `**.overflow-x-\***` | Applies overflow on the x-axis. | e.g., `.overflow-x-scroll` applies `overflow-x: scroll;` |
+| `**.overflow-y-\***` | Applies overflow on the y-axis. | e.g., `.overflow-y-hidden` applies `overflow-y: hidden;` |

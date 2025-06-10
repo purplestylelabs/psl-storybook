@@ -46,3 +46,21 @@ Display design token documentation generated from your stylesheets and icon file
   viewType="table"
   maxHeight="none"
 />
+
+# Typography System
+
+This document provides a comprehensive overview of the typography system, detailing utility classes for text styling and the responsive behavior of heading and paragraph elements. The system heavily relies on CSS variables for defining font sizes, line heights, letter spacings, and colors, which are sourced from your `tokens.scss` file.
+
+---
+
+## Global Font Utilities
+
+These classes provide direct control over individual font properties. They are often used for fine-tuning specific elements outside of the main heading/paragraph hierarchies.
+
+| Class Name           | Description                                  | Usage Example (HTML)               | Actual CSS Applied                             |
+| :------------------- | :------------------------------------------- | :--------------------------------- | :--------------------------------------------- |
+| `.fs-N`              | Sets font size. `N` corresponds to a defined font size token (e.g., `fs-16` for `var(--font-size-16)`). | `<p class="fs-16">Text</p>`       | `font-size: var(--font-size-N, [fallback_size]) !important;` |
+| `.lh-N`              | Sets line height. `N` corresponds to a defined line height token (e.g., `lh-1-5` for `var(--font-line-height-1-5)`). | `<p class="lh-1-5">Text</p>`      | `line-height: var(--font-line-height-N, [fallback_lh]) !important;` |
+| `.ls-N`              | Sets letter spacing. `N` corresponds to a defined letter spacing token (e.g., `ls-0-4` for `var(--font-letter-spacing-0-4)`). | `<p class="ls-0-4">Text</p>`      | `letter-spacing: var(--font-letter-spacing-N, [fallback_ls]) !important;` |
+
+**Note:** The exact values for `N` and `[fallback_size/lh/ls]` depend on the `$font-sizes`, `$line-heights`, and `$letter-spacings` maps defined in your `tokens.scss` file.

@@ -1,0 +1,37 @@
+import { Canvas, Story, PureArgsTable, Meta } from "@storybook/blocks";
+import FlexDemo from "../../components/FlexDemo";
+import { Primary } from '../FlexExample.stories';
+
+<Meta title="Tokens/Flex" />
+
+# Flex Utility Classes
+
+Your introduction text here (e.g., explanation of your flexbox utility classes and how to use them).
+
+## Class Reference
+
+| Class                  | CSS Rule                               | Description                                     |
+| ---------------------- | -------------------------------------- | ----------------------------------------------- |
+| `.flex`                | `display: flex;`                       | Defines a flex container (block-level)          |
+| `.flex-inline`         | `display: inline-flex;`                | Defines a flex container that flows inline      |
+| `.flex-row`            | `flex-direction: row;`                 | Children in a row (horizontal axis)             |
+| `.flex-row-reverse`    | `flex-direction: row-reverse;`         | Children in a row reversed                      |
+| `.flex-column`         | `flex-direction: column;`              | Children in a column (vertical stack)           |
+| `.flex-column-reverse` | `flex-direction: column-reverse;`      | Children in a column reversed                   |
+| `.flex-wrap`           | `flex-wrap: wrap;`                     | Allows children to wrap onto multiple lines     |
+| `.flex-no-wrap`        | `flex-wrap: nowrap;`                   | Prevents wrapping (single line)                 |
+| `.flex-wrap-reverse`   | `flex-wrap: wrap-reverse;`             | Wraps children in reverse order of lines        |
+| `.justify-start`       | `justify-content: flex-start;`         | Align items at the start of the main axis       |
+| `.justify-end`         | `justify-content: flex-end;`           | Align items at the end of the main axis         |
+| `.justify-center`      | `justify-content: center;`             | Center items along the main axis                |
+| `.justify-between`     | `justify-content: space-between;`      | Even spacing **between** items (no gap at ends) |
+| `.justify-around`      | `justify-content: space-around;`       | Even spacing around items (including ends)      |
+| `.justify-evenly`      | `justify-content: space-evenly;`       | Equal space _between_ all items including ends  |
+| `.items-start`         | `align-items: flex-start;`             | Align items to the flex container’s top/left    |
+| `.items-end`           | `align-items: flex-end;`               | Align items to bottom/right of container        |
+| `.items-center`        | `align-items: center;`                 | Align items along the center (cross-axis)       |
+| `.flex-grow`           | `flex: 1 1 auto;` (or `flex-grow: 1;`) | Allow an item to grow to fill available space   |
+| `.flex-shrink`         | `flex-shrink: 1;` (allow shrinking)    | Allow an item to shrink if needed (default)     |
+| `.flex-grow-0`         | `flex-grow: 0;`                        | Prevent an item from growing                    |
+| `.flex-shrink-0`       | `flex-shrink: 0;`                      | Prevent an item from shrinking                  |
+

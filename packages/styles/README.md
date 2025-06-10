@@ -12,3 +12,10 @@
 - [x] - Opacity
 - [x] - Shadow
 - [x] - Spacing
+
+- [x] - Flex
+- [x] - Layout
+- [x] - Misc
+- [x] - Responsive
+- [x] - Text
+- [x] - Typography
