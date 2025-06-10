@@ -1,5 +1,5 @@
 # syntax=docker.io/docker/dockerfile:1.7-labs
-FROM node:22-alpine AS builder
+FROM node:24-alpine AS builder
 
 RUN npm install -g pnpm
 
@@ -15,7 +15,7 @@ COPY --exclude=**/node_modules . .
 
 WORKDIR /repo/packages/react-components
 
-RUN pnpm install --frozen-lockfile
+RUN --mount=type=cache,target=/root/.local/share/pnpm pnpm install --frozen-lockfile
 
 RUN pnpm build-storybook
 
