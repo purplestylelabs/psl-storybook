@@ -13,6 +13,8 @@ RUN --mount=type=cache,target=/root/.local/share/pnpm pnpm install --frozen-lock
 
 COPY --exclude=**/node_modules . .
 
+RUN pnpm dev:styles
+
 WORKDIR /repo/packages/react-components
 
 RUN --mount=type=cache,target=/root/.local/share/pnpm pnpm install --frozen-lockfile
