@@ -15,7 +15,7 @@ COPY --exclude=**/node_modules . .
 
 WORKDIR /repo/packages/react-components
 
-RUN --mount=type=cache,target=/root/.local/share/pnpm pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
 RUN pnpm build-storybook
 
