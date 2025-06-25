@@ -1,6 +1,6 @@
 {
   "name": "@psl-storybook/styles",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "type": "module",
   "main": "dist/util.min.css",
   "style": "dist/util.min.css",
@@ -18,9 +18,14 @@
     "lint:css:fix": "stylelint \"src/**/*.{scss,css}\" --fix"
   },
   "exports": {
+     ".": {
+      "import": "./dist/util.min.css",
+      "require": "./dist/util.min.css"
+    },
     "./util.css": "./dist/util.css",
     "./util.min.css": "./dist/util.min.css",
-    "./util.raw.css": "./dist/util.raw.css"
+    "./util.raw.css": "./dist/util.raw.css",
+    "./package.json": "./package.json"
   },
   "keywords": [],
   "author": "",

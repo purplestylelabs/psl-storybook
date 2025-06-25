@@ -2,6 +2,798 @@
 @use 'sass:string';
 @use 'tokens';
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.h7,
+.h1-big {
+  color: map.get(tokens.$colors, pernia-black);
+  font-family: var(--font-greycliff-demi-bold);
+  font-weight: var(--font-weight-500, 500);
+}
+
+$heading-selectors: (
+  h1-big: '.h1-big',
+  h1: 'h1, .h1',
+  h2: 'h2, .h2',
+  h3: 'h3, .h3',
+  h4: 'h4, .h4',
+  h5: 'h5, .h5',
+  h6: 'h6, .h6',
+  h7: '.h7',
+) !default;
+
+// $typo-settings: (
+//   min-b1: (
+//     h1-big: (
+//       font-size: var(--font-size-40),
+//       line-height: var(--font-line-height-1-4),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h1: (
+//       font-size: var(--font-size-32),
+//       line-height: var(--font-line-height-1-38),
+//       letter-spacing: var(--font-letter-spacing-0-8),
+//     ),
+//     h2: (
+//       font-size: var(--font-size-28),
+//       line-height: var(--font-line-height-1-43),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h3: (
+//       font-size: var(--font-size-24),
+//       line-height: var(--font-line-height-1-33),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h4: (
+//       font-size: var(--font-size-20),
+//       line-height: var(--font-line-height-1-4),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h5: (
+//       font-size: var(--font-size-18),
+//       line-height: var(--font-line-height-1-33),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h6: (
+//       font-size: var(--font-size-16),
+//       line-height: var(--font-line-height-1-5),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h7: (
+//       font-size: var(--font-size-13),
+//       line-height: var(--font-line-height-1-43),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//   ),
+
+//   range-b2-b1: (
+//     h1-big: (
+//       font-size: var(--font-size-32),
+//       line-height: var(--font-line-height-44),
+//       letter-spacing: var(--font-letter-spacing-0-8),
+//     ),
+//     h1: (
+//       font-size: var(--font-size-28),
+//       line-height: var(--font-line-height-40),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h2: (
+//       font-size: var(--font-size-24),
+//       line-height: var(--font-line-height-1-33),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h3: (
+//       font-size: var(--font-size-20),
+//       line-height: var(--font-line-height-1-4),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h4: (
+//       font-size: var(--font-size-18),
+//       line-height: var(--font-line-height-30),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h5: (
+//       font-size: var(--font-size-16),
+//       line-height: var(--font-line-height-24),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h6: (
+//       font-size: var(--font-size-14),
+//       line-height: var(--font-line-height-20),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h7: (
+//       font-size: var(--font-size-12),
+//       line-height: var(--font-line-height-1-33),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//   ),
+
+//   range-b3-b2: (
+//     h1-big: (
+//       font-size: var(--font-size-28),
+//       line-height: var(--font-line-height-40),
+//       letter-spacing: var(--font-letter-spacing-0-8),
+//     ),
+//     h1: (
+//       font-size: var(--font-size-24),
+//       line-height: var(--font-line-height-32),
+//       letter-spacing: var(--font-letter-spacing-0-6),
+//     ),
+//     h2: (
+//       font-size: var(--font-size-20),
+//       line-height: var(--font-line-height-28),
+//       letter-spacing: var(--font-letter-spacing-0-6),
+//     ),
+//     h3: (
+//       font-size: var(--font-size-18),
+//       line-height: var(--font-line-height-24),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h4: (
+//       font-size: var(--font-size-16),
+//       line-height: var(--font-line-height-24),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h5: (
+//       font-size: var(--font-size-14),
+//       line-height: var(--font-line-height-22),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h6: (
+//       font-size: var(--font-size-13),
+//       line-height: var(--font-line-height-18),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h7: (
+//       font-size: var(--font-size-12),
+//       line-height: var(--font-line-height-20),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//   ),
+
+//   range-b4-b3: (
+//     h1-big: (
+//       font-size: var(--font-size-24),
+//       line-height: var(--font-line-height-32),
+//       letter-spacing: var(--font-letter-spacing-0-6),
+//     ),
+//     h1: (
+//       font-size: var(--font-size-20),
+//       line-height: var(--font-line-height-28),
+//       letter-spacing: var(--font-letter-spacing-0-6),
+//     ),
+//     h2: (
+//       font-size: var(--font-size-18),
+//       line-height: var(--font-line-height-24),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h3: (
+//       font-size: var(--font-size-16),
+//       line-height: var(--font-line-height-24),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h4: (
+//       font-size: var(--font-size-14),
+//       line-height: var(--font-line-height-20),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h5: (
+//       font-size: var(--font-size-13),
+//       line-height: var(--font-line-height-20),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h6: (
+//       font-size: var(--font-size-12),
+//       line-height: var(--font-line-height-20),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h7: (
+//       font-size: var(--font-size-11),
+//       line-height: var(--font-line-height-18),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//   ),
+
+//   max-b4: (
+//     h1-big: (
+//       font-size: var(--font-size-20),
+//       line-height: var(--font-line-height-28),
+//       letter-spacing: var(--font-letter-spacing-0-6),
+//     ),
+//     h1: (
+//       font-size: var(--font-size-18),
+//       line-height: var(--font-line-height-24),
+//       letter-spacing: var(--font-letter-spacing-0-6),
+//     ),
+//     h2: (
+//       font-size: var(--font-size-16),
+//       line-height: var(--font-line-height-24),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h3: (
+//       font-size: var(--font-size-14),
+//       line-height: var(--font-line-height-22),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h4: (
+//       font-size: var(--font-size-13),
+//       line-height: var(--font-line-height-20),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h5: (
+//       font-size: var(--font-size-12),
+//       line-height: var(--font-line-height-20),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h6: (
+//       font-size: var(--font-size-12),
+//       line-height: var(--font-line-height-20),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//     h7: (
+//       font-size: var(--font-size-11),
+//       line-height: var(--font-line-height-18),
+//       letter-spacing: var(--font-letter-spacing-0-4),
+//     ),
+//   ),
+// ) !default;
+
+// @mixin apply-typography($settings) {
+//   @each $level, $props in $settings {
+//     #{map.get($heading-selectors, $level)} {
+//       @each $prop, $val in $props {
+//         #{$prop}: $val;
+//       }
+//     }
+//   }
+// }
+
+// @media only screen and (min-width: map.get(tokens.$breakpoints-min, b1)) {
+//   @include apply-typography(map.get($typo-settings, min-b1));
+// }
+
+// @media only screen and (min-width: map.get(tokens.$breakpoints-min, b2)) and (max-width: map.get(tokens.$breakpoints-min, b1)) {
+//   @include apply-typography(map.get($typo-settings, range-b2-b1));
+// }
+
+// @media only screen and (min-width: map.get(tokens.$breakpoints-min, b3)) and (max-width: map.get(tokens.$breakpoints-min, b2)) {
+//   @include apply-typography(map.get($typo-settings, range-b3-b2));
+// }
+
+// @media only screen and (min-width: map.get(tokens.$breakpoints-min, b4)) and (max-width: map.get(tokens.$breakpoints-min, b3)) {
+//   @include apply-typography(map.get($typo-settings, range-b4-b3));
+// }
+
+// @media only screen and (max-width: map.get(tokens.$breakpoints-min, b4)) {
+//   @include apply-typography(map.get($typo-settings, max-b4));
+// }
+
+$bps: (
+  b1: 1919px,
+  b2: 1679px,
+  b3: 1439px,
+  b4: 1279px,
+);
+
+$scales: (
+  h1-big: (
+    mobile: (
+      font-size: var(--font-size-24),
+      line-height: var(--font-line-height-32),
+      letter-spacing: var(--font-letter-spacing-1-2),
+    ),
+    b4: (
+      font-size: var(--font-size-24),
+      line-height: var(--font-line-height-32),
+      letter-spacing: var(--font-letter-spacing-0-6),
+    ),
+    b3: (
+      font-size: var(--font-size-28),
+      line-height: var(--font-line-height-40),
+      letter-spacing: var(--font-letter-spacing-0-8),
+    ),
+    b2: (
+      font-size: var(--font-size-32),
+      line-height: var(--font-line-height-44),
+      letter-spacing: var(--font-letter-spacing-0-8),
+    ),
+    b1: (
+      font-size: var(--font-size-40),
+      line-height: var(--font-line-height-1-4),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+  ),
+  h1: (
+    mobile: (
+      font-size: var(--font-size-18),
+      line-height: var(--font-line-height-1-25),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b4: (
+      font-size: var(--font-size-20),
+      line-height: var(--font-line-height-28),
+      letter-spacing: var(--font-letter-spacing-0-6),
+    ),
+    b3: (
+      font-size: var(--font-size-24),
+      line-height: var(--font-line-height-32),
+      letter-spacing: var(--font-letter-spacing-0-6),
+    ),
+    b2: (
+      font-size: var(--font-size-28),
+      line-height: var(--font-line-height-40),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b1: (
+      font-size: var(--font-size-32),
+      line-height: var(--font-line-height-1-38),
+      letter-spacing: var(--font-letter-spacing-0-8),
+    ),
+  ),
+  h2: (
+    mobile: (
+      font-size: var(--font-size-16),
+      line-height: var(--font-line-height-1-25),
+      letter-spacing: var(--font-letter-spacing-0-2),
+    ),
+    b4: (
+      font-size: var(--font-size-18),
+      line-height: var(--font-line-height-24),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b3: (
+      font-size: var(--font-size-20),
+      line-height: var(--font-line-height-28),
+      letter-spacing: var(--font-letter-spacing-0-6),
+    ),
+    b2: (
+      font-size: var(--font-size-24),
+      line-height: var(--font-line-height-1-33),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b1: (
+      font-size: var(--font-size-28),
+      line-height: var(--font-line-height-1-43),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+  ),
+  h3: (
+    mobile: (
+      font-size: var(--font-size-14),
+      line-height: var(--font-line-height-1-25),
+      letter-spacing: var(--font-letter-spacing-0-2),
+    ),
+    b4: (
+      font-size: var(--font-size-16),
+      line-height: var(--font-line-height-24),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b3: (
+      font-size: var(--font-size-18),
+      line-height: var(--font-line-height-24),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b2: (
+      font-size: var(--font-size-20),
+      line-height: var(--font-line-height-1-4),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b1: (
+      font-size: var(--font-size-24),
+      line-height: var(--font-line-height-1-33),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+  ),
+  h4: (
+    mobile: (
+      font-size: var(--font-size-12),
+      line-height: var(--font-line-height-1-67),
+      letter-spacing: var(--font-letter-spacing-0-2),
+    ),
+    b4: (
+      font-size: var(--font-size-14),
+      line-height: var(--font-line-height-20),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b3: (
+      font-size: var(--font-size-16),
+      line-height: var(--font-line-height-24),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b2: (
+      font-size: var(--font-size-18),
+      line-height: var(--font-line-height-30),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b1: (
+      font-size: var(--font-size-20),
+      line-height: var(--font-line-height-1-4),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+  ),
+  h5: (
+    mobile: (
+      font-size: var(--font-size-11),
+      line-height: var(--font-line-height-1-45),
+      letter-spacing: var(--font-letter-spacing-0-2),
+    ),
+    b4: (
+      font-size: var(--font-size-13),
+      line-height: var(--font-line-height-20),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b3: (
+      font-size: var(--font-size-14),
+      line-height: var(--font-line-height-22),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b2: (
+      font-size: var(--font-size-16),
+      line-height: var(--font-line-height-24),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b1: (
+      font-size: var(--font-size-18),
+      line-height: var(--font-line-height-1-33),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+  ),
+  h6: (
+    mobile: (
+      font-size: var(--font-size-10),
+      line-height: var(--font-line-height-1-6),
+      letter-spacing: var(--font-letter-spacing-0-2),
+    ),
+    b4: (
+      font-size: var(--font-size-12),
+      line-height: var(--font-line-height-20),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b3: (
+      font-size: var(--font-size-13),
+      line-height: var(--font-line-height-18),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b2: (
+      font-size: var(--font-size-14),
+      line-height: var(--font-line-height-20),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b1: (
+      font-size: var(--font-size-16),
+      line-height: var(--font-line-height-1-5),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+  ),
+  h7: (
+    mobile: (
+      font-size: var(--font-size-8),
+      line-height: var(--font-line-height-1-25),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b4: (
+      font-size: var(--font-size-11),
+      line-height: var(--font-line-height-18),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b3: (
+      font-size: var(--font-size-12),
+      line-height: var(--font-line-height-20),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b2: (
+      font-size: var(--font-size-12),
+      line-height: var(--font-line-height-1-33),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b1: (
+      font-size: var(--font-size-13),
+      line-height: var(--font-line-height-1-43),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+  ),
+  h8: (
+    mobile: (
+      font-size: var(--font-size-6),
+      line-height: var(--font-line-height-1-25),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b4: (
+      font-size: var(--font-size-10),
+      line-height: var(--font-line-height-18),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b3: (
+      font-size: var(--font-size-11),
+      line-height: var(--font-line-height-20),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b2: (
+      font-size: var(--font-size-10),
+      line-height: var(--font-line-height-1-33),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+    b1: (
+      font-size: var(--font-size-10),
+      line-height: var(--font-line-height-1-43),
+      letter-spacing: var(--font-letter-spacing-0-4),
+    ),
+  ),
+);
+
+// mobile-first base styles
+@each $level, $map in $scales {
+  // if the key has a dash (h1-big), use just that selector
+  $sel: if(string.index($level, '-'), '.#{$level}', '#{$level}, .#{$level}');
+  #{$sel} {
+    $m: map.get($map, mobile);
+    font-size: map.get($m, font-size);
+    line-height: map.get($m, line-height);
+    letter-spacing: map.get($m, letter-spacing);
+  }
+}
+
+// grouped responsive overrides
+@each $bp, $minw in $bps {
+  @media (min-width: $minw) {
+    @each $level, $map in $scales {
+      $sel: if(
+        string.index($level, '-'),
+        '.#{$level}',
+        '#{$level}, .#{$level}'
+      );
+      #{$sel} {
+        $vals: map.get($map, $bp);
+        font-size: map.get($vals, font-size);
+        line-height: map.get($vals, line-height);
+        letter-spacing: map.get($vals, letter-spacing);
+      }
+    }
+  }
+}
+
+.p1,
+.p2,
+.p3,
+.p4,
+.p5,
+.p6 {
+  color: map.get(tokens.$colors, pernia-black);
+  letter-spacing: var(--font-letter-spacing-0-2);
+}
+
+$para-selectors: (
+  p1: '.p1',
+  p2: '.p2',
+  p3: '.p3',
+  p4: '.p4',
+  p5: '.p5',
+  p6: '.p6',
+) !default;
+
+
+// paragraph type scale — values copied 1-for-1 from your old rules
+$para-scales: (
+  p1: (
+    mobile: (font-size: var(--font-size-12), line-height: var(--font-line-height-20)),
+    b4:     (font-size: var(--font-size-13), line-height: var(--font-line-height-22)),
+    b3:     (font-size: var(--font-size-14), line-height: var(--font-line-height-24)),
+    b2:     (font-size: var(--font-size-16), line-height: var(--font-line-height-26)),
+    b1:     (font-size: var(--font-size-16), line-height: var(--font-line-height-26)),
+  ),
+  p2: (
+    mobile: (font-size: var(--font-size-11), line-height: var(--font-line-height-18)),
+    b4:     (font-size: var(--font-size-12), line-height: var(--font-line-height-20)),
+    b3:     (font-size: var(--font-size-13), line-height: var(--font-line-height-22)),
+    b2:     (font-size: var(--font-size-14), line-height: var(--font-line-height-24)),
+    b1:     (font-size: var(--font-size-14), line-height: var(--font-line-height-24)),
+  ),
+  p3: (
+    mobile: (font-size: var(--font-size-11), line-height: var(--font-line-height-18)),
+    b4:     (font-size: var(--font-size-11), line-height: var(--font-line-height-18)),
+    b3:     (font-size: var(--font-size-12), line-height: var(--font-line-height-20)),
+    b2:     (font-size: var(--font-size-13), line-height: var(--font-line-height-22)),
+    b1:     (font-size: var(--font-size-13), line-height: var(--font-line-height-22)),
+  ),
+  p4: (
+    mobile: (font-size: var(--font-size-10), line-height: var(--font-line-height-16)),
+    b4:     (font-size: var(--font-size-11), line-height: var(--font-line-height-18)),
+    b3:     (font-size: var(--font-size-12), line-height: var(--font-line-height-20)),
+    b2:     (font-size: var(--font-size-12), line-height: var(--font-line-height-20)),
+    b1:     (font-size: var(--font-size-12), line-height: var(--font-line-height-20)),
+  ),
+  p5: (
+    mobile: (font-size: var(--font-size-10), line-height: var(--font-line-height-16)),
+    b4:     (font-size: var(--font-size-10), line-height: var(--font-line-height-16)),
+    b3:     (font-size: var(--font-size-11), line-height: var(--font-line-height-18)),
+    b2:     (font-size: var(--font-size-11), line-height: var(--font-line-height-18)),
+    b1:     (font-size: var(--font-size-11), line-height: var(--font-line-height-18)),
+  ),
+  p6: (
+    mobile: (font-size: var(--font-size-9),  line-height: var(--font-line-height-16)),
+    b4:     (font-size: var(--font-size-9),  line-height: var(--font-line-height-16)),
+    b3:     (font-size: var(--font-size-10), line-height: var(--font-line-height-1-5)),
+    b2:     (font-size: var(--font-size-10), line-height: var(--font-line-height-1-5)),
+    b1:     (font-size: var(--font-size-10), line-height: var(--font-line-height-1-5)),
+  ),
+);
+
+// mobile-first base styles
+@each $level, $map in $para-scales {
+  // same selector pattern as headings for consistency
+  $sel: '#{$level}, .#{$level}';
+  #{$sel} {
+    $m: map.get($map, mobile);
+    font-size: map.get($m, font-size);
+    line-height: map.get($m, line-height);
+  }
+}
+
+// breakpoint overrides in one grouped loop
+@each $bp, $minw in $bps {
+  @media (min-width: $minw) {
+    @each $level, $map in $para-scales {
+      $sel: '#{$level}, .#{$level}';
+      #{$sel} {
+        $vals: map.get($map, $bp);
+        font-size: map.get($vals, font-size);
+        line-height: map.get($vals, line-height);
+      }
+    }
+  }
+}
+
+// $para-typo-settings: (
+//   min-b2: (
+//     p1: (
+//       font-size: var(--font-size-16),
+//       line-height: var(--font-line-height-26),
+//     ),
+//     p2: (
+//       font-size: var(--font-size-14),
+//       line-height: var(--font-line-height-24),
+//     ),
+//     p3: (
+//       font-size: var(--font-size-13),
+//       line-height: var(--font-line-height-22),
+//     ),
+//     p4: (
+//       font-size: var(--font-size-12),
+//       line-height: var(--font-line-height-20),
+//     ),
+//     p5: (
+//       font-size: var(--font-size-11),
+//       line-height: var(--font-line-height-18),
+//     ),
+//     p6: (
+//       font-size: var(--font-size-10),
+//       line-height: var(--font-line-height-1-5),
+//     ),
+//   ),
+
+//   range-b3-b2: (
+//     p1: (
+//       font-size: var(--font-size-14),
+//       line-height: var(--font-line-height-24),
+//     ),
+//     p2: (
+//       font-size: var(--font-size-13),
+//       line-height: var(--font-line-height-22),
+//     ),
+//     p3: (
+//       font-size: var(--font-size-12),
+//       line-height: var(--font-line-height-20),
+//     ),
+//     p4: (
+//       font-size: var(--font-size-12),
+//       line-height: var(--font-line-height-20),
+//     ),
+//     p5: (
+//       font-size: var(--font-size-11),
+//       line-height: var(--font-line-height-18),
+//     ),
+//     p6: (
+//       font-size: var(--font-size-10),
+//       line-height: var(--font-line-height-1-5),
+//     ),
+//   ),
+
+//   range-b4-b3: (
+//     p1: (
+//       font-size: var(--font-size-13),
+//       line-height: var(--font-line-height-22),
+//     ),
+//     p2: (
+//       font-size: var(--font-size-12),
+//       line-height: var(--font-line-height-20),
+//     ),
+//     p3: (
+//       font-size: var(--font-size-11),
+//       line-height: var(--font-line-height-18),
+//     ),
+//     p4: (
+//       font-size: var(--font-size-11),
+//       line-height: var(--font-line-height-18),
+//     ),
+//     p5: (
+//       font-size: var(--font-size-10),
+//       line-height: var(--font-line-height-16),
+//     ),
+//     p6: (
+//       font-size: var(--font-size-9),
+//       line-height: var(--font-line-height-16),
+//     ),
+//   ),
+
+//   max-b4: (
+//     p1: (
+//       font-size: var(--font-size-12),
+//       line-height: var(--font-line-height-20),
+//     ),
+//     p2: (
+//       font-size: var(--font-size-11),
+//       line-height: var(--font-line-height-18),
+//     ),
+//     p3: (
+//       font-size: var(--font-size-11),
+//       line-height: var(--font-line-height-18),
+//     ),
+//     p4: (
+//       font-size: var(--font-size-10),
+//       line-height: var(--font-line-height-16),
+//     ),
+//     p5: (
+//       font-size: var(--font-size-10),
+//       line-height: var(--font-line-height-16),
+//     ),
+//     p6: (
+//       font-size: var(--font-size-9),
+//       line-height: var(--font-line-height-16),
+//     ),
+//   ),
+// ) !default;
+
+// @mixin apply-para-typo($settings) {
+//   @each $key, $props in $settings {
+//     $sel: map.get($para-selectors, $key);
+
+//     @if $sel and $props {
+//       #{string.unquote($sel)} {
+//         @each $prop, $val in $props {
+//           #{$prop}: #{$val};
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media only screen and (min-width: map.get(tokens.$breakpoints-min, b2)) {
+//   @include apply-para-typo(map.get($para-typo-settings, 'min-b2'));
+// }
+
+// @media only screen and (min-width: map.get(tokens.$breakpoints-min, b3)) and (max-width: map.get(tokens.$breakpoints-min, b2)) {
+//   @include apply-para-typo(map.get($para-typo-settings, 'range-b3-b2'));
+// }
+
+// @media only screen and (min-width: map.get(tokens.$breakpoints-min, b4)) and (max-width: map.get(tokens.$breakpoints-min, b3)) {
+//   @include apply-para-typo(map.get($para-typo-settings, 'range-b4-b3'));
+// }
+
+// @media only screen and (max-width: map.get(tokens.$breakpoints-min, b4)) {
+//   @include apply-para-typo(map.get($para-typo-settings, 'max-b4'));
+// }
+
 $font-variants: (
   demi-bold: (
     family: var(--font-greycliff-demi-bold),
@@ -60,446 +852,4 @@ $font-variants: (
       }
     }
   }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-.h7,
-.h1-big {
-  color: map.get(tokens.$colors, pernia-black);
-  font-family: var(--font-greycliff-demi-bold);
-  font-weight: var(--font-weight-500, 500);
-}
-
-$heading-selectors: (
-  h1-big: '.h1-big',
-  h1: 'h1, .h1',
-  h2: 'h2, .h2',
-  h3: 'h3, .h3',
-  h4: 'h4, .h4',
-  h5: 'h5, .h5',
-  h6: 'h6, .h6',
-  h7: '.h7',
-) !default;
-
-$typo-settings: (
-  min-b1: (
-    h1-big: (
-      font-size: var(--font-size-40),
-      line-height: var(--line-height-1-4),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h1: (
-      font-size: var(--font-size-32),
-      line-height: var(--line-height-1-38),
-      letter-spacing: var(--letter-spacing-0-8),
-    ),
-    h2: (
-      font-size: var(--font-size-28),
-      line-height: var(--line-height-1-43),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h3: (
-      font-size: var(--font-size-24),
-      line-height: var(--line-height-1-33),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h4: (
-      font-size: var(--font-size-20),
-      line-height: var(--line-height-1-4),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h5: (
-      font-size: var(--font-size-18),
-      line-height: var(--line-height-1-33),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h6: (
-      font-size: var(--font-size-16),
-      line-height: var(--line-height-1-5),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h7: (
-      font-size: var(--font-size-13),
-      line-height: var(--line-height-1-43),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-  ),
-
-  range-b2-b1: (
-    h1-big: (
-      font-size: var(--font-size-32),
-      line-height: var(--line-height-44),
-      letter-spacing: var(--letter-spacing-0-8),
-    ),
-    h1: (
-      font-size: var(--font-size-28),
-      line-height: var(--line-height-40),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h2: (
-      font-size: var(--font-size-24),
-      line-height: var(--line-height-1-33),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h3: (
-      font-size: var(--font-size-20),
-      line-height: var(--line-height-1-4),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h4: (
-      font-size: var(--font-size-18),
-      line-height: var(--line-height-30),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h5: (
-      font-size: var(--font-size-16),
-      line-height: var(--line-height-24),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h6: (
-      font-size: var(--font-size-14),
-      line-height: var(--line-height-20),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h7: (
-      font-size: var(--font-size-12),
-      line-height: var(--line-height-1-33),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-  ),
-
-  range-b3-b2: (
-    h1-big: (
-      font-size: var(--font-size-28),
-      line-height: var(--line-height-40),
-      letter-spacing: var(--letter-spacing-0-8),
-    ),
-    h1: (
-      font-size: var(--font-size-24),
-      line-height: var(--line-height-32),
-      letter-spacing: var(--letter-spacing-0-6),
-    ),
-    h2: (
-      font-size: var(--font-size-20),
-      line-height: var(--line-height-28),
-      letter-spacing: var(--letter-spacing-0-6),
-    ),
-    h3: (
-      font-size: var(--font-size-18),
-      line-height: var(--line-height-24),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h4: (
-      font-size: var(--font-size-16),
-      line-height: var(--line-height-24),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h5: (
-      font-size: var(--font-size-14),
-      line-height: var(--line-height-22),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h6: (
-      font-size: var(--font-size-13),
-      line-height: var(--line-height-18),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h7: (
-      font-size: var(--font-size-12),
-      line-height: var(--line-height-20),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-  ),
-
-  range-b4-b3: (
-    h1-big: (
-      font-size: var(--font-size-24),
-      line-height: var(--line-height-32),
-      letter-spacing: var(--letter-spacing-0-6),
-    ),
-    h1: (
-      font-size: var(--font-size-20),
-      line-height: var(--line-height-28),
-      letter-spacing: var(--letter-spacing-0-6),
-    ),
-    h2: (
-      font-size: var(--font-size-18),
-      line-height: var(--line-height-24),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h3: (
-      font-size: var(--font-size-16),
-      line-height: var(--line-height-24),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h4: (
-      font-size: var(--font-size-14),
-      line-height: var(--line-height-20),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h5: (
-      font-size: var(--font-size-13),
-      line-height: var(--line-height-20),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h6: (
-      font-size: var(--font-size-12),
-      line-height: var(--line-height-20),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h7: (
-      font-size: var(--font-size-11),
-      line-height: var(--line-height-18),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-  ),
-
-  max-b4: (
-    h1-big: (
-      font-size: var(--font-size-20),
-      line-height: var(--line-height-28),
-      letter-spacing: var(--letter-spacing-0-6),
-    ),
-    h1: (
-      font-size: var(--font-size-18),
-      line-height: var(--line-height-24),
-      letter-spacing: var(--letter-spacing-0-6),
-    ),
-    h2: (
-      font-size: var(--font-size-16),
-      line-height: var(--line-height-24),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h3: (
-      font-size: var(--font-size-14),
-      line-height: var(--line-height-22),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h4: (
-      font-size: var(--font-size-13),
-      line-height: var(--line-height-20),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h5: (
-      font-size: var(--font-size-12),
-      line-height: var(--line-height-20),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h6: (
-      font-size: var(--font-size-12),
-      line-height: var(--line-height-20),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-    h7: (
-      font-size: var(--font-size-11),
-      line-height: var(--line-height-18),
-      letter-spacing: var(--letter-spacing-0-4),
-    ),
-  ),
-) !default;
-
-@mixin apply-typography($settings) {
-  @each $level, $props in $settings {
-    #{map.get($heading-selectors, $level)} {
-      @each $prop, $val in $props {
-        #{$prop}: $val;
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: map.get(tokens.$breakpoints-min, b1)) {
-  @include apply-typography(map.get($typo-settings, min-b1));
-}
-
-@media only screen and (min-width: map.get(tokens.$breakpoints-min, b2)) and (max-width: map.get(tokens.$breakpoints-min, b1)) {
-  @include apply-typography(map.get($typo-settings, range-b2-b1));
-}
-
-@media only screen and (min-width: map.get(tokens.$breakpoints-min, b3)) and (max-width: map.get(tokens.$breakpoints-min, b2)) {
-  @include apply-typography(map.get($typo-settings, range-b3-b2));
-}
-
-@media only screen and (min-width: map.get(tokens.$breakpoints-min, b4)) and (max-width: map.get(tokens.$breakpoints-min, b3)) {
-  @include apply-typography(map.get($typo-settings, range-b4-b3));
-}
-
-@media only screen and (max-width: map.get(tokens.$breakpoints-min, b4)) {
-  @include apply-typography(map.get($typo-settings, max-b4));
-}
-
-.p1,
-.p2,
-.p3,
-.p4,
-.p5,
-.p6,
-.p7 {
-  color: map.get(tokens.$colors, pernia-black);
-  letter-spacing: 0.2px;
-}
-
-$para-selectors: (
-  p1: '.p1',
-  p2: '.p2',
-  p3: '.p3',
-  p4: '.p4',
-  p5: '.p5',
-  p6: '.p6',
-  p7: '.p7',
-) !default;
-
-$para-typo-settings: (
-  min-b2: (
-    p1: (
-      font-size: var(--para-font-size-16),
-      line-height: var(--para-line-height-26),
-    ),
-    p2: (
-      font-size: var(--para-font-size-14),
-      line-height: var(--para-line-height-24),
-    ),
-    p3: (
-      font-size: var(--para-font-size-13),
-      line-height: var(--para-line-height-22),
-    ),
-    p4: (
-      font-size: var(--para-font-size-12),
-      line-height: var(--para-line-height-20),
-    ),
-    p5: (
-      font-size: var(--para-font-size-11),
-      line-height: var(--para-line-height-18),
-    ),
-    p6: (
-      font-size: var(--para-font-size-10),
-      line-height: var(--para-line-height-1-5),
-    ),
-    p7: null,
-  ),
-
-  range-b3-b2: (
-    p1: (
-      font-size: var(--para-font-size-14),
-      line-height: var(--para-line-height-24),
-    ),
-    p2: (
-      font-size: var(--para-font-size-13),
-      line-height: var(--para-line-height-22),
-    ),
-    p3: (
-      font-size: var(--para-font-size-12),
-      line-height: var(--para-line-height-20),
-    ),
-    p4: (
-      font-size: var(--para-font-size-12),
-      line-height: var(--para-line-height-20),
-    ),
-    p5: (
-      font-size: var(--para-font-size-11),
-      line-height: var(--para-line-height-18),
-    ),
-    p6: (
-      font-size: var(--para-font-size-10),
-      line-height: var(--para-line-height-1-5),
-    ),
-    p7: null,
-  ),
-
-  range-b4-b3: (
-    p1: (
-      font-size: var(--para-font-size-13),
-      line-height: var(--para-line-height-22),
-    ),
-    p2: (
-      font-size: var(--para-font-size-12),
-      line-height: var(--para-line-height-20),
-    ),
-    p3: (
-      font-size: var(--para-font-size-11),
-      line-height: var(--para-line-height-18),
-    ),
-    p4: (
-      font-size: var(--para-font-size-11),
-      line-height: var(--para-line-height-18),
-    ),
-    p5: (
-      font-size: var(--para-font-size-10),
-      line-height: var(--para-line-height-16),
-    ),
-    p6: (
-      font-size: var(--para-font-size-9),
-      line-height: var(--para-line-height-16),
-    ),
-    p7: null,
-  ),
-
-  max-b4: (
-    p1: (
-      font-size: var(--para-font-size-12),
-      line-height: var(--para-line-height-20),
-    ),
-    p2: (
-      font-size: var(--para-font-size-11),
-      line-height: var(--para-line-height-18),
-    ),
-    p3: (
-      font-size: var(--para-font-size-11),
-      line-height: var(--para-line-height-18),
-    ),
-    p4: (
-      font-size: var(--para-font-size-10),
-      line-height: var(--para-line-height-16),
-    ),
-    p5: (
-      font-size: var(--para-font-size-10),
-      line-height: var(--para-line-height-16),
-    ),
-    p6: (
-      font-size: var(--para-font-size-9),
-      line-height: var(--para-line-height-16),
-    ),
-    p7: null,
-  ),
-) !default;
-
-@mixin apply-para-typo($settings) {
-  @each $key, $props in $settings {
-    $sel: map.get($para-selectors, $key);
-
-    @if $sel and $props {
-      #{string.unquote($sel)} {
-        @each $prop, $val in $props {
-          #{$prop}: #{$val};
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: map.get(tokens.$breakpoints-min, b2)) {
-  @include apply-para-typo(map.get($para-typo-settings, 'min-b2'));
-}
-
-@media only screen and (min-width: map.get(tokens.$breakpoints-min, b3)) and (max-width: map.get(tokens.$breakpoints-min, b2)) {
-  @include apply-para-typo(map.get($para-typo-settings, 'range-b3-b2'));
-}
-
-@media only screen and (min-width: map.get(tokens.$breakpoints-min, b4)) and (max-width: map.get(tokens.$breakpoints-min, b3)) {
-  @include apply-para-typo(map.get($para-typo-settings, 'range-b4-b3'));
-}
-
-@media only screen and (max-width: map.get(tokens.$breakpoints-min, b4)) {
-  @include apply-para-typo(map.get($para-typo-settings, 'max-b4'));
 }

@@ -101,7 +101,7 @@ $display-types: (
 ) !default;
 
 @each $d in $display-types {
-  .#{$d} {
+  .d-#{$d} {
     display: $d; // ds-block, hide, d-flex
   }
 }

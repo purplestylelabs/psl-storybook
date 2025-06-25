@@ -5,55 +5,55 @@
 @each $key, $val in tokens.$spacing {
   // all-sides
   .m-#{$key} {
-    margin: var(--spacing-#{$val}, $val);
+    margin: var(--spacing-#{$key}, $val);
   }
   .p-#{$key} {
-    padding: var(--spacing-#{$val}, $val);
+    padding: var(--spacing-#{$key}, $val);
+  }
+
+  // x/y-sides
+  .mx-#{$key} {
+    margin-left: var(--spacing-#{$key}, $val);
+    margin-right: var(--spacing-#{$key}, $val);
+  }
+  .my-#{$key} {
+    margin-bottom: var(--spacing-#{$key}, $val);
+    margin-top: var(--spacing-#{$key}, $val);
+  }
+
+  .px-#{$key} {
+    padding-left: var(--spacing-#{$key}, $val);
+    padding-right: var(--spacing-#{$key}, $val);
+  }
+  .py-#{$key} {
+    padding-bottom: var(--spacing-#{$key}, $val);
+    padding-top: var(--spacing-#{$key}, $val);
   }
 
   // single-side
   .mt-#{$key} {
-    margin-top: var(--spacing-#{$val}, $val);
+    margin-top: var(--spacing-#{$key}, $val);
   }
   .mr-#{$key} {
-    margin-right: var(--spacing-#{$val}, $val);
+    margin-right: var(--spacing-#{$key}, $val);
   }
   .mb-#{$key} {
-    margin-bottom: var(--spacing-#{$val}, $val);
+    margin-bottom: var(--spacing-#{$key}, $val);
   }
   .ml-#{$key} {
-    margin-left: var(--spacing-#{$val}, $val);
+    margin-left: var(--spacing-#{$key}, $val);
   }
 
   .pt-#{$key} {
-    padding-top: var(--spacing-#{$val}, $val);
+    padding-top: var(--spacing-#{$key}, $val);
   }
   .pr-#{$key} {
-    padding-right: var(--spacing-#{$val}, $val);
+    padding-right: var(--spacing-#{$key}, $val);
   }
   .pb-#{$key} {
-    padding-bottom: var(--spacing-#{$val}, $val);
+    padding-bottom: var(--spacing-#{$key}, $val);
   }
   .pl-#{$key} {
-    padding-left: var(--spacing-#{$val}, $val);
-  }
-
-  // axis shorthands you were missing
-  .mx-#{$key} {
-    margin-left: var(--spacing-#{$val}, $val);
-    margin-right: var(--spacing-#{$val}, $val);
-  }
-  .my-#{$key} {
-    margin-bottom: var(--spacing-#{$val}, $val);
-    margin-top: var(--spacing-#{$val}, $val);
-  }
-
-  .px-#{$key} {
-    padding-left: var(--spacing-#{$val}, $val);
-    padding-right: var(--spacing-#{$val}, $val);
-  }
-  .py-#{$key} {
-    padding-bottom: var(--spacing-#{$val}, $val);
-    padding-top: var(--spacing-#{$val}, $val);
+    padding-left: var(--spacing-#{$key}, $val);
   }
 }

@@ -1,24 +1,45 @@
 @use 'sass:map';
 @use 'sass:math';
 
-@function gen-spacing($max, $step) {
-  $m: ();
-  $count: math.floor(math.div($max, $step));
-
-  @for $i from 0 through $count {
-    $size: $i * $step; // 0, 5, 10, …
-    $m: map.merge(
-      $m,
+@function gen-spacing($sizes...) {
+  $map: ();
+  @each $size in $sizes {
+    $map: map.merge(
+      $map,
       (
-        $size: $size * 1px,
+        $size: if($size == auto, auto, $size * 1px),
       )
     );
   }
-
-  @return $m;
+  @return $map;
 }
 
-$spacing: gen-spacing(100, 5) !default;
+$spacing: gen-spacing(
+  0,
+  2,
+  4,
+  5,
+  8,
+  10,
+  12,
+  15,
+  16,
+  20,
+  24,
+  25,
+  28,
+  32,
+  40,
+  48,
+  50,
+  60,
+  64,
+  72,
+  120,
+  150,
+  200,
+  auto
+) !default;
 
 $opacity-max: 100 !default;
 $opacity-step: 10 !default;
@@ -26,21 +47,22 @@ $opacity-step: 10 !default;
 // TODO: pallete should be grouped by color, gray group (gray-1, gray-2), red group
 /* prettier-ignore */
 $colors: (
-  'grey-1':              #fafafa,                  // placeholder: bg-fafafa
-  'grey-2':              #f4f4f4,                  // light-grey: bg-light-grey
-  'grey-3':              #dbdbdb,                  // placeholder-bg: db-color, placeholder-grey-color
-  'grey-4':              #c2c2c2,                  // grey-light: pernia-light-grey
-  'grey-5':              #bbb,                  // disabled: 
-  'grey-6':              #acacac,                  // grey: cl-grey
-  'grey-7':              #8c8c8c,                  // account-input: 
-  'grey-8':              #757575,                  // pernia-dark-grey: pernia-black, black-color, dark-grey
-  'grey-9':              #666,                  // dark-grey: c6
-  'grey-10':             #333,                  // label: cl-label
+  'grey-5':              #fafafa,                  // placeholder: bg-fafafa
+  'grey-10':              #f4f4f4,                  // light-grey: bg-light-grey
+  'grey-15':              #dbdbdb,                  // placeholder-bg: db-color, placeholder-grey-color
+  'grey-20':              #d8d8d8,                  
+  'grey-25':              #c2c2c2,                  // grey-light: pernia-light-grey
+  'grey-30':              #bbb,                  // disabled: 
+  'grey-35':              #acacac,                  // grey: cl-grey
+  'grey-40':              #8c8c8c,                  // account-input: 
+  'grey-45':              #757575,                  // pernia-dark-grey: pernia-black, black-color, dark-grey
+  'grey-50':              #666,                  // dark-grey: c6
+  'grey-55':             #333,                  // label: cl-label
 
   // Transparent grey variants
   'grey-transparent-15': hsla(0, 0%, 86%, 15%),   // grey-15: rgba(#dbdbdb, 0.15)
   'grey-transparent-25': hsla(0, 0%, 86%, 25%),   // grey-25: rgba(#dbdbdb, 0.25)
-  'grey-transparent-30': hsla(0, 0%, 86%, 30%),   // grey-30: rgba(#dbdbdb, 0.30)
+  'grey-transparent-30': hsla(0, 0%, 86%, 30%),   // grey-30: rgba(#dbdbdb, 0.30) // TODO: Can be removed
   'grey-transparent-50': hsla(0, 0%, 86%, 50%),   // grey-50: rgba(#dbdbdb, 0.50)
 
   // Core neutrals
@@ -142,9 +164,15 @@ $font-sizes: (
   12: 12px,
   11: 11px,
   10: 10px,
+  8: 8px,
+  6: 6px,
 ) !default;
 
 $line-heights: (
+  '1-25': 1.25,
+  '1-6': 1.6,
+  '1-67': 1.67,
+  '1-54': 1.54,
   '1-5': 1.5,
   '1-43': 1.43,
   '1-4': 1.4,
@@ -162,15 +190,18 @@ $line-heights: (
   18: 18px,
   16: 16px,
   12: 12px,
+  normal: normal,
 ) !default;
 
 $letter-spacings: (
   '0-8': 0.8px,
   '0-6': 0.6px,
+  '0-5': 0.5px,
   '0-4': 0.4px,
   '0-2': 0.2px,
   '0-1': 0.1px,
   0: 0,
+  normal: normal,
 ) !default;
 
 :root {
@@ -187,7 +218,7 @@ $letter-spacings: (
   * @presenter Color
   */
   @each $key, $val in $colors {
-    --color-#{$key}: #{$val}; /* bg-#{$key}, text-#{$key} */
+    --color-#{$key}: #{$val}; /* bg-#{$key}, text-#{$key}, border-color-#{$key} */
   }
 
   /*!

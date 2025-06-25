@@ -1,13 +1,13 @@
 {
   "name": "psl-storybook",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev:vue": "pnpm run storybook --filter=./packages/vue-components",
     "dev:react": "wait-on tcp:6007 && pnpm run storybook --filter=./packages/react-components",
     "dev:styles": "pnpm --filter=./packages/styles run build",
     "dev": "concurrently --kill-others-on-fail \"pnpm --filter './packages/vue-components' run storybook:silent\" \"wait-on tcp:6007 && pnpm --filter './packages/react-components' run storybook\"",
-    "build": "pnpm run build-storybook --filter=./packages/react-components",
+    "build": "pnpm --filter=./packages/styles run build",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
@@ -18,5 +18,8 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "volta": {
+    "node": "24.3.0"
   }
 }
