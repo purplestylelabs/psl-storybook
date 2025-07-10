@@ -5,55 +5,55 @@
 @each $key, $val in tokens.$spacing {
   // all-sides
   .m-#{$key} {
-    margin: var(--spacing-#{$key}, $val);
+    margin: var(--spacing-#{$key});
   }
   .p-#{$key} {
-    padding: var(--spacing-#{$key}, $val);
+    padding: var(--spacing-#{$key});
   }
 
   // x/y-sides
   .mx-#{$key} {
-    margin-left: var(--spacing-#{$key}, $val);
-    margin-right: var(--spacing-#{$key}, $val);
+    margin-left: var(--spacing-#{$key});
+    margin-right: var(--spacing-#{$key});
   }
   .my-#{$key} {
-    margin-bottom: var(--spacing-#{$key}, $val);
-    margin-top: var(--spacing-#{$key}, $val);
+    margin-bottom: var(--spacing-#{$key});
+    margin-top: var(--spacing-#{$key});
   }
 
   .px-#{$key} {
-    padding-left: var(--spacing-#{$key}, $val);
-    padding-right: var(--spacing-#{$key}, $val);
+    padding-left: var(--spacing-#{$key});
+    padding-right: var(--spacing-#{$key});
   }
   .py-#{$key} {
-    padding-bottom: var(--spacing-#{$key}, $val);
-    padding-top: var(--spacing-#{$key}, $val);
+    padding-bottom: var(--spacing-#{$key});
+    padding-top: var(--spacing-#{$key});
   }
 
   // single-side
   .mt-#{$key} {
-    margin-top: var(--spacing-#{$key}, $val);
+    margin-top: var(--spacing-#{$key}) !important;
   }
   .mr-#{$key} {
-    margin-right: var(--spacing-#{$key}, $val);
+    margin-right: var(--spacing-#{$key}) !important;
   }
   .mb-#{$key} {
-    margin-bottom: var(--spacing-#{$key}, $val);
+    margin-bottom: var(--spacing-#{$key}) !important;
   }
   .ml-#{$key} {
-    margin-left: var(--spacing-#{$key}, $val);
+    margin-left: var(--spacing-#{$key}) !important;
   }
 
   .pt-#{$key} {
-    padding-top: var(--spacing-#{$key}, $val);
+    padding-top: var(--spacing-#{$key}) !important;
   }
   .pr-#{$key} {
-    padding-right: var(--spacing-#{$key}, $val);
+    padding-right: var(--spacing-#{$key}) !important;
   }
   .pb-#{$key} {
-    padding-bottom: var(--spacing-#{$key}, $val);
+    padding-bottom: var(--spacing-#{$key}) !important;
   }
   .pl-#{$key} {
-    padding-left: var(--spacing-#{$key}, $val);
+    padding-left: var(--spacing-#{$key}) !important;
   }
 }

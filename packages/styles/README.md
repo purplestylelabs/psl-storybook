@@ -9,7 +9,6 @@
 - [x] - FontWeight
 - [x] - LetterSpacing
 - [x] - LineHeight
-- [x] - Opacity
 - [x] - Shadow
 - [x] - Spacing
 

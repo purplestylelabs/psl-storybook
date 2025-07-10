@@ -3,30 +3,11 @@
 
 @each $name, $col in tokens.$colors {
   .text-#{$name} {
-    color: var(--color-#{$name}, $col);
+    color: var(--color-#{$name});
   }
 
   .bg-#{$name} {
-    background-color: var(--color-#{$name}, $col);
-  }
-}
-
-@each $name in tokens.$colors-overrides {
-  .text-#{$name}-override {
-    color: var(--color-#{$name}, map.get(tokens.$colors, $name)) !important;
-  }
-
-  .bg-#{$name}-override {
-    background-color: var(
-      --color-#{$name},
-      map.get(tokens.$colors, $name)
-    ) !important;
-  }
-}
-
-@each $name in tokens.$colors-on-hover {
-  .text-#{$name}-hover:hover {
-    color: var(--color-#{$name}, map.get(tokens.$colors, $name)) !important;
+    background-color: var(--color-#{$name});
   }
 }
 
